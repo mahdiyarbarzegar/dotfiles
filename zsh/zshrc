@@ -1,0 +1,45 @@
+# ============================================================
+# Zsh configuration
+# ============================================================
+
+ZSH_CONFIG_DIR="${${(%):-%x}:A:h}"
+
+# ------------------------------------------------------------
+# Core shell configuration
+# ------------------------------------------------------------
+
+source "$ZSH_CONFIG_DIR/options.zsh"
+source "$ZSH_CONFIG_DIR/history.zsh"
+
+# ------------------------------------------------------------
+# Environment
+# ------------------------------------------------------------
+
+source "$ZSH_CONFIG_DIR/environment.zsh"
+source "$ZSH_CONFIG_DIR/path.zsh"
+
+# ------------------------------------------------------------
+# Plugins & prompt
+# ------------------------------------------------------------
+
+source "$ZSH_CONFIG_DIR/zinit.zsh"
+source "$ZSH_CONFIG_DIR/prompt.zsh"
+
+# ------------------------------------------------------------
+# User configuration
+# ------------------------------------------------------------
+
+source "$ZSH_CONFIG_DIR/aliases.zsh"
+source "$ZSH_CONFIG_DIR/functions.zsh"
+
+# ------------------------------------------------------------
+# Development tools
+# ------------------------------------------------------------
+
+source "$ZSH_CONFIG_DIR/tools/nvm.zsh"
+source "$ZSH_CONFIG_DIR/tools/pyenv.zsh"
+source "$ZSH_CONFIG_DIR/tools/java.zsh"
+source "$ZSH_CONFIG_DIR/tools/vivado.zsh"
+source "$ZSH_CONFIG_DIR/tools/petalinux.zsh"
+source "$ZSH_CONFIG_DIR/tools/modelsim.zsh"
+source "$ZSH_CONFIG_DIR/tools/jetbrains.zsh"
