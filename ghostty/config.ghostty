@@ -1,0 +1,29 @@
+
+# Font
+font-size = 16
+
+# New Tabs
+keybind = ctrl+shift+t=new_tab
+
+# Split Window
+keybind = ctrl+shift+k=new_split:up
+keybind = ctrl+shift+j=new_split:down
+keybind = ctrl+shift+l=new_split:right
+keybind = ctrl+shift+h=new_split:left
+
+# Move between tabs
+keybind = alt+u=next_tab
+keybind = alt+i=previous_tab
+
+# Move between splits
+keybind = alt+k=goto_split:up
+keybind = alt+j=goto_split:down
+keybind = alt+l=goto_split:left
+keybind = alt+h=goto_split:right
+
+# Close current tab
+keybind = ctrl+shift+w=close_tab
+
+# Close current split
+keybind = ctrl+shift+q=close_surface
+

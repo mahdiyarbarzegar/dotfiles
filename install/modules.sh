@@ -5,4 +5,5 @@ MODULES=(
     git
     nvim
     wezterm
+    ghostty
 )
