@@ -32,14 +32,9 @@ install_ghostty() {
 }
 
 install_ghostty_fedora() {
-    local repo_script="$DOTFILES_DIR/packages/fedora/repos/ghostty.sh"
+    log "Enabling Ghostty COPR..."
 
-    [[ -f "$repo_script" ]] || \
-        die "Ghostty repository script not found: $repo_script"
-
-    log "Configuring Ghostty repository..."
-
-    bash "$repo_script"
+    sudo dnf copr enable -y scottames/ghostty
 
     log "Installing Ghostty..."
 

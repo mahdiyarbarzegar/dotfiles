@@ -32,14 +32,9 @@ install_wezterm() {
 }
 
 install_wezterm_fedora() {
-    local repo_script="$DOTFILES_DIR/packages/fedora/repos/wezterm.sh"
+    log "Enabling WezTerm COPR..."
 
-    [[ -f "$repo_script" ]] || \
-        die "WezTerm repository script not found: $repo_script"
-
-    log "Configuring WezTerm repository..."
-
-    bash "$repo_script"
+    sudo dnf copr enable -y wezfurlong/wezterm-nightly
 
     log "Installing WezTerm..."
 
