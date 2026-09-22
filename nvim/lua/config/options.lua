@@ -9,8 +9,9 @@ opt.number = true
 opt.relativenumber = true
 
 -- Indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 8
+opt.shiftwidth = 8
+set softtabstop=8
 opt.expandtab = true
 opt.smartindent = true
 
@@ -23,7 +24,8 @@ opt.incsearch = true
 -- Editing
 opt.wrap = false
 opt.cursorline = true
-opt.scrolloff = 8
+opt.scrolloff = 16
+opt.clipboard = unnamedplus,unnamed,ideaput
 
 -- Splits
 opt.splitright = true
