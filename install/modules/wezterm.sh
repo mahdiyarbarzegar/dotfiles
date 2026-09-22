@@ -11,11 +11,19 @@ install_wezterm() {
     local wezterm_config="$DOTFILES_DIR/wezterm/wezterm.lua"
     local wezterm_config_target="$HOME/.wezterm.lua"
 
+    log "Installing WezTerm..."
+
+    [[ -f "$DOTFILES_DIR/tools/wezterm.sh" ]] || \
+        die "WezTerm installer not found: $DOTFILES_DIR/tools/wezterm.sh"
+
+    bash "$DOTFILES_DIR/tools/wezterm.sh"
+
     log "Installing WezTerm configuration..."
 
-    [[ -f "$wezterm_config" ]] || die "WezTerm configuration not found: $wezterm_config"
+    [[ -f "$wezterm_config" ]] || \
+        die "WezTerm configuration not found: $wezterm_config"
 
     link_file "$wezterm_config" "$wezterm_config_target"
 
-    log "WezTerm configuration installed successfully."
+    log "WezTerm installed successfully."
 }

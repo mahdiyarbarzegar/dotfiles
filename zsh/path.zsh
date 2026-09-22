@@ -4,7 +4,7 @@
 
 path=(
     "$HOME/.local/bin"
-    "/opt/nvim"
+    "/opt/nvim/bin"
     "$HOME/bin"
     $path
 )

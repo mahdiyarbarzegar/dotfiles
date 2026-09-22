@@ -7,6 +7,8 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/install/common.sh"
 source "$SCRIPT_DIR/install/modules.sh"
 
+DRY_RUN=false
+
 usage() {
     cat <<EOF
 Usage: $(basename "$0") [module...]
@@ -23,6 +25,9 @@ EOF
 
 run_module() {
     local module="$1"
+    shift
+
+    export DOTFILES_DRY_RUN="$DRY_RUN"
 
     load_module "$module"
 
@@ -33,7 +38,7 @@ run_module() {
     fi
 
     log "Running module: $module"
-    "$function_name"
+    "$function_name" "$@"
 }
 
 main() {
@@ -42,18 +47,58 @@ main() {
         exit 1
     fi
 
-    for module in "$@"; do
-        case "$module" in
+    local module
+    local -a module_args=()
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
             -h|--help)
                 usage
+                exit 0
                 ;;
-            --all)
+
+            --dry-run)
+                DRY_RUN=true
+                shift
+                ;;
+
+            all)
                 for module in "${MODULES[@]}"; do
                     run_module "$module"
                 done
+                shift
                 ;;
+
+            packages)
+                module_args=()
+                shift
+
+                while [[ $# -gt 0 ]]; do
+                    case "$1" in
+                        --group)
+                            [[ $# -ge 2 ]] || die "--group requires a group name"
+
+                            module_args+=("--group" "$2")
+                            shift 2
+                            ;;
+
+                        --dry-run)
+                            DRY_RUN=true
+                            shift
+                            ;;
+
+                        *)
+                            break
+                            ;;
+                    esac
+                done
+
+                run_module packages "${module_args[@]}"
+                ;;
+
             *)
-                run_module "$module"
+                run_module "$1"
+                shift
                 ;;
         esac
     done
